@@ -3,6 +3,8 @@
 A free, research-grounded online IQ test. Static site, no backend, no database,
 no accounts. The test is generated and scored entirely in the visitor's browser.
 
+**Live: https://n-h-l.github.io/**
+
 ```
 npm run check     # verify items -> build -> audit -> smoke test
 npm run dev       # build and serve at http://localhost:4173
@@ -299,3 +301,82 @@ report — and it should keep saying so.
 - **English only.** The verbal items assume fluent English.
 - **Requires JavaScript.** Unavoidable given that scoring happens client-side;
   the `/test/` page says so, and the rest of the site works without it.
+
+---
+
+## Deploying
+
+The site is a GitHub Pages **user site**. Pages serves `docs/` on the `main`
+branch, so the source and the published site live together on one branch. To
+publish a change:
+
+```
+npm run check          # never push a red build - this gates the item bank
+git add -A
+git commit -m "..."
+git push
+```
+
+Pages rebuilds within a minute or two. `build.js` writes `docs/.nojekyll`, which
+stops GitHub running Jekyll over the output (without it, Pages renders
+README.md as the site index and skips paths beginning with an underscore).
+
+If you move to a custom domain, change `origin` in `site.config.js` and rebuild
+**before** pushing - `origin` is what canonical tags, the sitemap and the Open
+Graph tags are built from. A canonical pointing at a domain you do not own will
+get the site dropped from search results.
+
+---
+
+## Turning ads on
+
+Ads are fully wired but emit **nothing** until a publisher id is set. Until
+then the slots are inert placeholders and no Google script is loaded at all.
+
+1. Get the site indexed and add some traffic history first. AdSense reviews a
+   live site, and in practice it rarely approves a `*.github.io` subdomain -
+   plan on a custom domain you own.
+2. Apply at adsense.google.com and wait for approval (days to weeks).
+3. Paste the publisher id into `site.config.js`:
+
+   ```js
+   ads: {
+     publisherId: 'ca-pub-XXXXXXXXXXXXXXXX',
+     slots: { homeBelowFold: '', articleInline: '', resultsBelow: '' }
+   }
+   ```
+
+   Slot ids are optional. Left blank, the units run as responsive auto ads.
+   Fill them in later from the AdSense dashboard for per-unit reporting.
+4. `npm run check && git add -A && git commit && git push`.
+
+The build then emits, automatically:
+
+- the `adsbygoogle.js` loader plus a `preconnect` to Google's ad host
+- one `<ins class="adsbygoogle">` per slot
+- `ads.txt` at the site root, containing your publisher line
+
+### The placement rules, and why
+
+These are enforced in code, not left to discipline:
+
+| Rule | Where | Why |
+|---|---|---|
+| No ads during the test | `assets/js/ads.js` checks `#screen-test` is not active, and the results unit lives inside a `<template>` until the test ends | An ad beside a timed reasoning item is both a misclick trap and a confound on the score |
+| Never above the score | the results unit renders below the score card | Burying the result under an ad is what makes free IQ sites untrustworthy |
+| No sticky, interstitial, pop-up or auto-play units | only in-flow responsive units are generated | These are the formats the Coalition for Better Ads found correlate most with ad-blocker adoption |
+| Space reserved before load | `.ad-slot[data-reserved]` sets a min-height | Stops ads shifting the page, which protects Cumulative Layout Shift |
+| Consent first | `assets/js/site.js` gates on `CSConsent`; declining serves non-personalised ads via `requestNonPersonalizedAds` | The banner is a minimal stand-in. For real EU traffic, install a Google-certified CMP and let it own consent. |
+
+### Getting found
+
+Search Console needs your Google account, so it is a manual step:
+
+1. Add `https://n-h-l.github.io/` as a property at
+   search.google.com/search-console (verify with the HTML tag - paste it into
+   `googleSiteVerification` in `site.config.js` and rebuild).
+2. Submit `https://n-h-l.github.io/sitemap.xml`.
+
+Ranking for a query like "iq test" is a long game against established sites.
+The honest levers here are the ones already built in: fast static pages, real
+cited content, correct structured data, and a methodology page that earns links.
