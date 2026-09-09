@@ -146,6 +146,12 @@ var sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '\n</urlset>\n';
 write('sitemap.xml', sitemap);
 
+/* GitHub Pages runs Jekyll over the published directory unless this file is
+ * present. Jekyll silently skips files and folders beginning with an
+ * underscore and can rewrite others, so disable it: this directory is already
+ * a finished static site. */
+write('.nojekyll', '');
+
 write('robots.txt',
   'User-agent: *\n' +
   'Allow: /\n' +
