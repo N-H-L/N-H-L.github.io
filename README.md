@@ -5,6 +5,9 @@ no accounts. The test is generated and scored entirely in the visitor's browser.
 
 **Live: https://cogniscale.vercel.app/**
 
+Going from here to earning from ads: **[LAUNCH.md](LAUNCH.md)** — ordered
+checklist, with what needs your account and what I can do.
+
 ```
 npm run check     # verify items -> build -> audit -> smoke test
 npm run dev       # build and serve at http://localhost:4173
