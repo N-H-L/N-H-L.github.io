@@ -87,6 +87,18 @@ htmlFiles.forEach(function (file) {
     if (d.length < 70) warn(name, 'meta description is only ' + d.length + ' chars');
   }
 
+  /* Every table must sit inside .table-wrap, which is what gives it its own
+   * horizontal scroll. An unwrapped table is wider than a phone screen and
+   * makes the whole page scroll sideways - a real, visible defect that is easy
+   * to introduce by mis-typing the wrapper class. */
+  var tableIdx = -1;
+  while ((tableIdx = html.indexOf('<table', tableIdx + 1)) !== -1) {
+    var before = html.slice(Math.max(0, tableIdx - 120), tableIdx);
+    if (before.indexOf('table-wrap') === -1) {
+      fail(name, 'a <table> is not wrapped in .table-wrap and will overflow on narrow screens');
+    }
+  }
+
   // ---- canonical
   var isNoindex = /<meta name="robots" content="noindex/.test(html);
   var canonM = html.match(/<link rel="canonical" href="([^"]*)"/);

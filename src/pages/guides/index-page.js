@@ -20,6 +20,55 @@ var GUIDES = [
     mins: 8
   },
   {
+    href: '/guides/what-iq-predicts/',
+    title: 'What IQ actually predicts',
+    text: 'School results, job performance, income and lifespan - with the correlations stated plainly, ' +
+      'including the 2022 revision that cut the job-performance estimate from 0.51 to 0.31.',
+    mins: 9
+  },
+  {
+    href: '/guides/can-you-improve-your-iq/',
+    title: 'Can you improve your IQ?',
+    text: 'Brain training barely transfers; education reliably adds one to five points a year. The honest ' +
+      'evidence on raising a score versus raising the ability underneath it.',
+    mins: 9
+  },
+  {
+    href: '/guides/iq-and-age/',
+    title: 'How IQ changes with age',
+    text: 'Fluid reasoning declines while vocabulary keeps rising into the sixties - and age norming is ' +
+      'why your score can stay flat through all of it.',
+    mins: 8
+  },
+  {
+    href: '/guides/fluid-vs-crystallised-intelligence/',
+    title: 'Fluid vs crystallised intelligence',
+    text: 'The distinction Cattell drew in 1963, how each ability is measured, why they move in opposite ' +
+      'directions across a lifetime, and whether fluid reasoning can be trained.',
+    mins: 8
+  },
+  {
+    href: '/guides/working-memory-and-intelligence/',
+    title: 'Working memory and intelligence',
+    text: 'One of the strongest correlates of reasoning ability, why matrix items lean on it so heavily, ' +
+      'and why training it still fails to raise IQ.',
+    mins: 8
+  },
+  {
+    href: '/guides/iq-vs-eq/',
+    title: 'IQ vs EQ',
+    text: 'Emotional intelligence is real but smaller than the popular claim. Ability EI, trait EI, the ' +
+      'personality overlap, and where "matters more than IQ" came from.',
+    mins: 8
+  },
+  {
+    href: '/guides/are-iq-tests-biased/',
+    title: 'Are IQ tests biased?',
+    text: 'Bias has three distinct technical meanings and none of them is "a score gap". What the evidence ' +
+      'settles, what it cannot, and where this test is weakest.',
+    mins: 9
+  },
+  {
     href: '/guides/are-online-iq-tests-accurate/',
     title: 'Are online IQ tests accurate?',
     text: 'Reliability, validity and norming - the three properties that separate a defensible online test ' +
@@ -27,10 +76,31 @@ var GUIDES = [
     mins: 9
   },
   {
-    href: '/guides/fluid-vs-crystallised-intelligence/',
-    title: 'Fluid vs crystallised intelligence',
-    text: 'The distinction Cattell drew in 1963, how each ability is measured, why they move in opposite ' +
-      'directions across a lifetime, and whether fluid reasoning can be trained.',
+    href: '/guides/how-iq-tests-are-made/',
+    title: 'How IQ tests are built and normed',
+    text: 'Blueprint, item piloting, item statistics, standardisation sample, reliability and validity - ' +
+      'and which stage cheap tests quietly skip.',
+    mins: 9
+  },
+  {
+    href: '/guides/types-of-iq-tests/',
+    title: 'The main types of IQ test',
+    text: 'Clinical batteries, non-verbal matrices, group tests and online tests compared on what they ' +
+      'sample, who may administer them, and what their scores support.',
+    mins: 8
+  },
+  {
+    href: '/guides/ravens-progressive-matrices/',
+    title: "How Raven's Progressive Matrices work",
+    text: 'The design that has dominated non-verbal testing since 1938, what makes one item harder than ' +
+      'another, and why this site generates its own rather than using the originals.',
+    mins: 8
+  },
+  {
+    href: '/guides/mensa-and-high-iq-societies/',
+    title: 'Mensa and high-IQ societies',
+    text: 'The 98th percentile criterion, why it converts to 130, 132 or 148 depending on the scale, and ' +
+      'why no unsupervised online score can ever qualify you.',
     mins: 8
   },
   {
@@ -46,8 +116,8 @@ module.exports = {
   slug: 'guides',
   title: 'Guides to IQ Scores and Testing | CogniScale',
   ogTitle: 'Guides to IQ scores and cognitive testing',
-  description: 'Sourced explainers on IQ score ranges, average IQ, how accurate online tests are, fluid vs crystallised intelligence, and practice questions.',
-  updated: '2026-09-06',
+  description: 'Fifteen sourced explainers on IQ scores, what they predict, how tests are built and normed, whether they are biased, and how much weight a single number deserves.',
+  updated: '2026-09-09',
   breadcrumbs: [{ slug: '', name: 'Home' }, { slug: 'guides', name: 'Guides' }],
   jsonld: [{
     '@context': 'https://schema.org',

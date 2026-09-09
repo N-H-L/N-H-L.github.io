@@ -12,7 +12,7 @@ order mostly means waiting twice.
 | Host | Vercel (project `cogniscale`, scope `delighted-projects`) |
 | Repo | https://github.com/N-H-L/N-H-L.github.io |
 | Ads | wired, tested, and emitting **nothing** until a publisher id is set |
-| Blocking monetisation | ~6 articles against a 15-20 target (domain: done) |
+| Blocking monetisation | nothing outstanding - awaiting indexing, then apply |
 
 Legend: **[you]** needs your account, your money, or your identity — I can't do
 it. **[me]** I can do it; just say go.
@@ -85,39 +85,23 @@ split your ranking signals, which is the opposite of what you're trying to do.
 
 ---
 
-## 3. Close the content gap — the slow part **[me, on your say-so]**
+## 3. Content ~ DONE
 
-AdSense's 2026 site review looks for roughly **15–20 articles** that answer real
-questions and show genuine expertise. Right now:
+AdSense's 2026 site review looks for roughly 15-20 articles that answer real
+questions and show genuine expertise. As of 9 September 2026:
 
-| | Count | Length |
+| | Count | Words |
 |---|---|---|
-| Guides | 5 | ~1,500 words each |
-| Methodology | 1 | 2,767 words |
-| **Total substantial pieces** | **6** | |
+| Guides | 15 | ~1,300-1,800 each |
+| Methodology | 1 | 2,767 |
+| **Total substantial pieces** | **16** | **~25,800** |
 
-Quality is not the problem — those lengths are healthy and every claim is
-sourced. **Quantity is.** You're about ten articles short.
+Every guide carries numbered citations to named papers, a table of contents,
+an FAQ block with matching structured data, and cross-links to related guides.
 
-Topics that fit the site's authority and target real search demand:
-
-- What is a good IQ score?
-- IQ and age: how scores change over a lifetime
-- Are IQ tests biased?
-- IQ vs EQ: what each actually predicts
-- The Flynn effect explained
-- Can you improve your IQ? (what the training research really shows)
-- How Raven's Progressive Matrices work
-- IQ and academic/job performance: what the correlations mean
-- Standard deviation and why IQ 15 points matters
-- Mensa and high-IQ societies: entry requirements
-- How IQ tests are actually built and normed
-- Working memory vs intelligence
-
-Say the word and I'll write them to the same standard as the existing guides —
-sourced, machine-checked links, correct structured data. Roughly two or three
-per batch is sensible so you can review them rather than rubber-stamp a wall of
-text.
+Remaining topics, if more depth is ever wanted: the Flynn effect as a
+standalone piece, IQ and creativity, twin studies and heritability, the history
+of intelligence testing, and IQ in education policy.
 
 ---
 
