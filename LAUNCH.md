@@ -8,11 +8,11 @@ order mostly means waiting twice.
 
 | | |
 |---|---|
-| Live at | https://cogniscale.vercel.app/ |
+| Live at | https://cogniscale.org/ |
 | Host | Vercel (project `cogniscale`, scope `delighted-projects`) |
 | Repo | https://github.com/N-H-L/N-H-L.github.io |
 | Ads | wired, tested, and emitting **nothing** until a publisher id is set |
-| Blocking monetisation | no owned domain; ~6 articles against a 15–20 target |
+| Blocking monetisation | ~6 articles against a 15-20 target (domain: done) |
 
 Legend: **[you]** needs your account, your money, or your identity — I can't do
 it. **[me]** I can do it; just say go.

@@ -6,6 +6,30 @@
   "installCommand": "echo 'no dependencies'",
   "trailingSlash": true,
   "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.cogniscale.org"
+        }
+      ],
+      "destination": "https://cogniscale.org/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "cogniscale.vercel.app"
+        }
+      ],
+      "destination": "https://cogniscale.org/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

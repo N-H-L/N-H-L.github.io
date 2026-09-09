@@ -3,7 +3,7 @@
 A free, research-grounded online IQ test. Static site, no backend, no database,
 no accounts. The test is generated and scored entirely in the visitor's browser.
 
-**Live: https://cogniscale.vercel.app/**
+**Live: https://cogniscale.org/**
 
 Going from here to earning from ads: **[LAUNCH.md](LAUNCH.md)** — ordered
 checklist, with what needs your account and what I can do.
@@ -309,7 +309,7 @@ report — and it should keep saying so.
 
 ## Deploying
 
-Production is **Vercel**: https://cogniscale.vercel.app/
+Production is **Vercel**: https://cogniscale.org/
 
 ```
 npm run check          # never ship a red build - this gates the item bank
@@ -392,10 +392,10 @@ These are enforced in code, not left to discipline:
 
 Search Console needs your Google account, so it is a manual step:
 
-1. Add `https://cogniscale.vercel.app/` as a property at
+1. Add `https://cogniscale.org/` as a property at
    search.google.com/search-console (verify with the HTML tag - paste it into
    `googleSiteVerification` in `site.config.js` and rebuild).
-2. Submit `https://cogniscale.vercel.app/sitemap.xml`.
+2. Submit `https://cogniscale.org/sitemap.xml`.
 
 Ranking for a query like "iq test" is a long game against established sites.
 The honest levers here are the ones already built in: fast static pages, real
