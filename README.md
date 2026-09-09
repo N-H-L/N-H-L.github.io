@@ -3,7 +3,7 @@
 A free, research-grounded online IQ test. Static site, no backend, no database,
 no accounts. The test is generated and scored entirely in the visitor's browser.
 
-**Live: https://n-h-l.github.io/**
+**Live: https://cogniscale.vercel.app/**
 
 ```
 npm run check     # verify items -> build -> audit -> smoke test
@@ -306,25 +306,40 @@ report — and it should keep saying so.
 
 ## Deploying
 
-The site is a GitHub Pages **user site**. Pages serves `docs/` on the `main`
-branch, so the source and the published site live together on one branch. To
-publish a change:
+Production is **Vercel**: https://cogniscale.vercel.app/
 
 ```
-npm run check          # never push a red build - this gates the item bank
-git add -A
-git commit -m "..."
-git push
+npm run check          # never ship a red build - this gates the item bank
+vercel deploy --prod   # builds from vercel.json and aliases cogniscale.vercel.app
+git add -A && git commit -m "..." && git push
 ```
 
-Pages rebuilds within a minute or two. `build.js` writes `docs/.nojekyll`, which
-stops GitHub running Jekyll over the output (without it, Pages renders
-README.md as the site index and skips paths beginning with an underscore).
+`vercel.json` runs the same build as `npm run build`, publishes `docs/`, and
+sets cache headers. HTML must revalidate; `assets/` gets a short cache with
+background revalidation, because asset filenames are **not** content-hashed -
+caching them immutably would pin an old test engine in people's browsers.
 
-If you move to a custom domain, change `origin` in `site.config.js` and rebuild
-**before** pushing - `origin` is what canonical tags, the sitemap and the Open
-Graph tags are built from. A canonical pointing at a domain you do not own will
-get the site dropped from search results.
+### The old GitHub Pages URL
+
+The repository is `N-H-L/N-H-L.github.io`, so GitHub serves a copy at
+https://n-h-l.github.io/ as well. GitHub does not allow a `user.github.io`
+site to be switched off, so that copy handles itself two ways:
+
+- every page carries `rel="canonical"` pointing at `origin`, which is what
+  search engines consolidate on; and
+- `legacyHosts` in `site.config.js` makes those pages redirect a real visitor
+  to the same path on the canonical host.
+
+`build.js` also writes `docs/.nojekyll`, without which Pages renders README.md
+as the site index and skips any path beginning with an underscore.
+
+### Moving to a custom domain
+
+Change `origin` in `site.config.js` and rebuild **before** deploying - `origin`
+is what canonical tags, the sitemap, `robots.txt` and the Open Graph tags are
+built from. A canonical pointing at a domain you do not own will get the site
+dropped from search results. Then `vercel domains add <domain>` and follow the
+DNS instructions. Add the old Vercel host to `legacyHosts` at the same time.
 
 ---
 
@@ -333,9 +348,11 @@ get the site dropped from search results.
 Ads are fully wired but emit **nothing** until a publisher id is set. Until
 then the slots are inert placeholders and no Google script is loaded at all.
 
-1. Get the site indexed and add some traffic history first. AdSense reviews a
-   live site, and in practice it rarely approves a `*.github.io` subdomain -
-   plan on a custom domain you own.
+1. **Get a custom domain first.** AdSense reviews a live site, and in practice
+   it does not approve free platform subdomains - `*.vercel.app`, `*.github.io`,
+   `*.netlify.app` are all reported as rejected, usually behind a generic
+   "content" reason rather than an explicit one. A domain you own is the only
+   reliable route.
 2. Apply at adsense.google.com and wait for approval (days to weeks).
 3. Paste the publisher id into `site.config.js`:
 
@@ -372,10 +389,10 @@ These are enforced in code, not left to discipline:
 
 Search Console needs your Google account, so it is a manual step:
 
-1. Add `https://n-h-l.github.io/` as a property at
+1. Add `https://cogniscale.vercel.app/` as a property at
    search.google.com/search-console (verify with the HTML tag - paste it into
    `googleSiteVerification` in `site.config.js` and rebuild).
-2. Submit `https://n-h-l.github.io/sitemap.xml`.
+2. Submit `https://cogniscale.vercel.app/sitemap.xml`.
 
 Ranking for a query like "iq test" is a long game against established sites.
 The honest levers here are the ones already built in: fast static pages, real

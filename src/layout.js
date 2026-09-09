@@ -208,6 +208,14 @@ function render(page, css) {
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
     '<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">',
     '<link rel="manifest" href="/site.webmanifest">',
+    // Send visitors away from a superseded host before anything renders.
+    // Runs before paint, preserves the path, and replaces the history entry so
+    // Back does not bounce. No-op on the canonical host.
+    (cfg.legacyHosts && cfg.legacyHosts.length
+      ? '<script>(function(){var l=' + JSON.stringify(cfg.legacyHosts) +
+        ';if(l.indexOf(location.hostname)>-1){location.replace(' +
+        JSON.stringify(cfg.origin) + '+location.pathname+location.search+location.hash);}})();</script>'
+      : ''),
     // ads / analytics origins
     cfg.ads.publisherId ? '<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>' : '',
     page.head || '',

@@ -7,7 +7,7 @@ module.exports = {
   name: 'CogniScale',
   tagline: 'Free IQ Test',
   // No trailing slash. Used for canonical URLs, sitemap, Open Graph and JSON-LD.
-  origin: 'https://n-h-l.github.io',
+  origin: 'https://cogniscale.vercel.app',
   // Build output directory. GitHub Pages serves a user site from either the
   // repository root or /docs on the default branch; /docs keeps the source and
   // the published site together on one branch.
@@ -50,6 +50,15 @@ module.exports = {
     reportFloor: 65,
     reportCeiling: 135
   },
+
+  // ---- Legacy hosts --------------------------------------------------------
+  // Hostnames that still serve this build but are no longer the canonical home
+  // (e.g. a previous GitHub Pages deployment). Pages served from these hosts
+  // send visitors to `origin`. Every page already carries a canonical tag
+  // pointing at `origin`, which is what search engines act on; this is purely
+  // so a person following an old link ends up on the real site.
+  // A user.github.io site cannot be switched off, which is why this exists.
+  legacyHosts: ['n-h-l.github.io'],
 
   // ---- Search Console ------------------------------------------------------
   // Paste the content value of the google-site-verification meta tag, if you
