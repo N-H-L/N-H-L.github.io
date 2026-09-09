@@ -63,5 +63,5 @@ module.exports = {
   // ---- Search Console ------------------------------------------------------
   // Paste the content value of the google-site-verification meta tag, if you
   // choose to verify by HTML tag rather than by DNS.
-  googleSiteVerification: ''
+  googleSiteVerification: 'BnBz_BDvQ9nR0DZ8quOCYh6PSUorPji5M-gQQeryWdA'
 };
