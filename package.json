@@ -1,0 +1,24 @@
+{
+  "name": "cogniscale",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CogniScale - a free, research-grounded online cognitive ability (IQ) test.",
+  "scripts": {
+    "build": "node tools/make-images.js && node build.js",
+    "verify": "node tools/verify-items.js",
+    "audit": "node tools/audit.js",
+    "smoke": "node tools/smoke.js",
+    "check": "npm run verify && npm run independent && npm run ambiguity && npm run build && npm run audit && npm run smoke",
+    "preview": "node tools/contact-sheet.js",
+    "serve": "node tools/serve.js",
+    "dev": "npm run build && node tools/serve.js",
+    "browser": "node tools/browser-check.js",
+    "shots": "node tools/shots.js",
+    "independent": "node tools/independent-check.js",
+    "ambiguity": "node tools/series-ambiguity.js"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  }
+}

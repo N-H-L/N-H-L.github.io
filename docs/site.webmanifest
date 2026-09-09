@@ -1,0 +1,21 @@
+{
+  "name": "CogniScale - Free IQ Test",
+  "short_name": "CogniScale",
+  "description": "A free, research-grounded IQ test scored with item response theory.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f6",
+  "theme_color": "#1f4470",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

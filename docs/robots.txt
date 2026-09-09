@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Result pages are per-session and carry no unique content worth indexing.
+Disallow: /test/?*
+
+Sitemap: https://n-h-l.github.io/sitemap.xml
