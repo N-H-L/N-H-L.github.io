@@ -1,2 +1,1 @@
-# Add your AdSense publisher id to site.config.js and rebuild.
-# The line will read:  google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-9858447101961034, DIRECT, f08c47fec0942fa0

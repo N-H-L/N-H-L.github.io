@@ -22,7 +22,7 @@ module.exports = {
   // ad code emitted (useful before AdSense approval, and for local testing).
   // Once approved, paste your ca-pub-XXXXXXXXXXXXXXXX id and the slot ids.
   ads: {
-    publisherId: '',          // e.g. 'ca-pub-1234567890123456'
+    publisherId: 'ca-pub-9858447101961034',
     slots: {
       homeBelowFold: '',      // responsive in-feed unit, home page, below the fold
       articleInline: '',      // responsive in-article unit, mid-article

@@ -1,4 +1,4 @@
-window.CS=window.CS||{};window.CS.config={"timeLimitSeconds":1800,"reportFloor":65,"reportCeiling":135,"adsEnabledOnTest":false,"publisherId":"","slots":{"homeBelowFold":"","articleInline":"","resultsBelow":""},"name":"CogniScale"};
+window.CS=window.CS||{};window.CS.config={"timeLimitSeconds":1800,"reportFloor":65,"reportCeiling":135,"adsEnabledOnTest":false,"publisherId":"ca-pub-9858447101961034","slots":{"homeBelowFold":"","articleInline":"","resultsBelow":""},"name":"CogniScale"};
 /* ---- src/lib/prng.js ---- */
 /* CogniScale - deterministic seeded PRNG.
  * Shared by the browser test engine and the offline item verifier so that an

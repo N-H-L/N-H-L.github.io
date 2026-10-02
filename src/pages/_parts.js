@@ -28,7 +28,13 @@ function esc(s) {
  */
 function adSlot(reserve, slotKey) {
   var slotId = cfg.ads.slots[slotKey] || '';
-  var enabled = !!cfg.ads.publisherId;
+  /* BOTH ids are required. A display unit with a client but no slot id can
+   * never fill, so emitting one would reserve space for a box that stays
+   * permanently blank. Until the slot ids arrive from the AdSense dashboard
+   * the container stays hidden, exactly as it is before approval. The loader
+   * script in <head> is emitted on the publisher id alone, which is what
+   * Google's crawler needs to see during review. */
+  var enabled = !!cfg.ads.publisherId && !!slotId;
 
   var inner = '';
   if (enabled) {
@@ -36,7 +42,7 @@ function adSlot(reserve, slotKey) {
       '<span class="ad-label">Advertisement</span>' +
       '<ins class="adsbygoogle" style="display:block"' +
       ' data-ad-client="' + esc(cfg.ads.publisherId) + '"' +
-      (slotId ? ' data-ad-slot="' + esc(slotId) + '"' : '') +
+      ' data-ad-slot="' + esc(slotId) + '"' +
       ' data-ad-format="auto" data-full-width-responsive="true"></ins>';
   }
 
