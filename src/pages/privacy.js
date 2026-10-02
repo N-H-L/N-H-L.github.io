@@ -44,12 +44,11 @@ module.exports = {
           '<tr><td><code>cs.test.v2</code></td><td>sessionStorage</td>' +
             '<td>Your in-progress answers, current question and timer start, so a refresh does not lose them</td>' +
             '<td>Until the tab is closed</td></tr>' +
-          '<tr><td><code>cs.consent.v1</code></td><td>localStorage</td>' +
-            '<td>Your advertising preference, so you are not asked on every page</td>' +
-            '<td>Until you clear site data</td></tr>' +
         '</tbody>' +
       '</table></div>' +
-      '<p>Neither is a cookie, neither is transmitted to us, and neither contains anything identifying.</p>' +
+      '<p>That is not a cookie, it is never transmitted to us, and it contains nothing identifying. '+
+      'Google&rsquo;s consent tool and its advertising partners set their own cookies, which are '+
+      'described below and are controlled through the consent dialog rather than through us.</p>' +
 
       '<h2>Advertising</h2>' +
       (cfg.ads.publisherId
@@ -68,9 +67,11 @@ module.exports = {
         'and from many other vendors at ' +
         '<a href="https://optout.aboutads.info" rel="nofollow noopener" target="_blank">optout.aboutads.info</a> ' +
         'or <a href="https://youronlinechoices.eu" rel="nofollow noopener" target="_blank">youronlinechoices.eu</a>.</li>' +
-        '<li>Choosing "Non-personalised only" in the banner on this site records that preference and ' +
-        'requests non-personalised ads. Non-personalised ads still use limited data such as approximate ' +
-        'location and page content for frequency capping, reporting and fraud prevention.</li>' +
+        '<li>Advertising consent is handled by Google&rsquo;s certified Consent Management Platform. ' +
+        'Where the law requires it, you are asked before any personalised advertising cookie is set, and ' +
+        'you can reopen that dialog at any time to change your answer. Declining personalisation still ' +
+        'permits non-personalised ads, which use limited data such as approximate location and page ' +
+        'content for frequency capping, reporting and fraud prevention.</li>' +
         '<li>Your test answers and your score are never shared with any advertiser or ad network. They are ' +
         'not available to share.</li>' +
       '</ul>' +

@@ -9,7 +9,7 @@
  *   2. Only slots that are already in the document, with their height reserved
  *      by CSS. Nothing is injected into the flow at run time, so ads cannot
  *      cause layout shift.
- *   3. Nothing until a consent decision exists, and non-personalised requests
+ *   3. Nothing until Google's certified CMP has resolved consent
  *      when the visitor declined.
  *   4. Every slot filled at most once.
  *   5. No sticky, interstitial, pop-up, auto-play or full-screen formats
@@ -31,13 +31,12 @@
     if (!cfg.publisherId) return;
     if (testInProgress()) return;
 
-    var consent = window.CSConsent;
-    if (!consent || !consent.decided) return;
-
-    if (!consent.personalised) {
-      // Ask Google for non-personalised ads before the first push.
-      (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
-    }
+    /* Consent is owned by Google's certified Consent Management Platform,
+     * configured under Privacy & messaging in AdSense. It is delivered by the
+     * same adsbygoogle.js loader and withholds the ad request itself until the
+     * visitor has answered, where the law requires asking. Gating here as well
+     * would double-ask, and could deadlock ads behind a banner we no longer
+     * show. */
 
     document.querySelectorAll('.ad-slot:not(.is-empty)').forEach(function (slot) {
       if (slot.closest('#screen-test')) return;          // belt and braces

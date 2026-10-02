@@ -151,7 +151,11 @@ async function waitForChrome(port, tries) {
     await cdp.send('Network.enable');
 
     var bucket = [];
+    var reqUrl = {};            // requestId -> url, so a failure can name itself
     cdp.on(function (m) {
+      if (m.method === 'Network.requestWillBeSent') {
+        reqUrl[m.params.requestId] = m.params.request.url;
+      }
       if (m.method === 'Runtime.exceptionThrown') {
         var d = m.params.exceptionDetails;
         bucket.push('EXCEPTION: ' + (d.exception && d.exception.description || d.text));
@@ -162,7 +166,15 @@ async function waitForChrome(port, tries) {
           return a.value !== undefined ? a.value : a.description;
         }).join(' '));
       } else if (m.method === 'Network.loadingFailed') {
-        bucket.push('REQUEST FAILED: ' + m.params.errorText);
+        var u = reqUrl[m.params.requestId] || '(unknown url)';
+        /* Google's ad tag routinely aborts its own sub-requests, and a visitor
+         * with an ad blocker produces the same signal. Neither is a defect in
+         * this site, and neither is something we can fix - so third-party ad
+         * requests are reported but do not fail the run. Anything served from
+         * our own origin still does. */
+        var thirdPartyAd = /googlesyndication|googletagservices|doubleclick|google-analytics|googleads/.test(u);
+        bucket.push((thirdPartyAd ? 'AD REQUEST (ignored): ' : 'REQUEST FAILED: ') +
+                    m.params.errorText + ' -> ' + u.slice(0, 100));
       }
     });
 
@@ -230,7 +242,8 @@ async function waitForChrome(port, tries) {
       if (overflowM > 1) errs.push('HORIZONTAL OVERFLOW at 390px: ' + overflowM + 'px');
       if (overflowD > 1) errs.push('HORIZONTAL OVERFLOW at 1440px: ' + overflowD + 'px');
 
-      errs.forEach(function (e) { problems.push(route + '  ' + e); });
+      errs.filter(function (e) { return e.indexOf('AD REQUEST (ignored)') !== 0; })
+          .forEach(function (e) { problems.push(route + '  ' + e); });
       results.push({ route: route, hD: hD, hM: hM, errs: errs.length });
 
       console.log('  ' + route.padEnd(38) + String(hD).padStart(7) + 'px' +
@@ -279,7 +292,8 @@ async function waitForChrome(port, tries) {
       "reviews:document.querySelectorAll('.review-item').length," +
       "adsInTest:document.querySelectorAll('.ad-slot').length};})()");
 
-    errs2.forEach(function (e) { problems.push('/test/  ' + e); });
+    errs2.filter(function (e) { return e.indexOf('AD REQUEST (ignored)') !== 0; })
+         .forEach(function (e) { problems.push('/test/  ' + e); });
 
     console.log('    answered ' + answered + ' questions');
     console.log('    score        ' + report.score);
